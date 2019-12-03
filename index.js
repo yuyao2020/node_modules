@@ -46,7 +46,9 @@ var server = http.createServer(function (request, response) {
     fs.writeFileSync('./db', newAmount)
     response.setHeader('Content-Type', 'application/javascript')
     response.statusCode = 200
-    response.write("alert('我是pay')")
+    response.write(`
+    amount.innerText = amount.innerText - 1
+    `)
     response.end()
   } else {
     response.statusCode = 404
